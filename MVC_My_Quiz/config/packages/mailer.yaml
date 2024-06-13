@@ -1,0 +1,4 @@
+framework:
+    mailer:
+        dsn: 'smtp://91e624d8e32d91:c152185c0716a8@sandbox.smtp.mailtrap.io:2525'
+

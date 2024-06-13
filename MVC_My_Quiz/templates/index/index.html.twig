@@ -1,0 +1,44 @@
+{% include 'base.html.twig' %}
+{% include 'header.html.twig' %}
+<style>
+    .body-container {display:flex; justify-content: space-around;font-size: 35px; flex-wrap: wrap;}
+    .categories-container {color:white; width: 45%; display:flex; flex-direction: column; align-items: center;}
+    .quiz-container {color:white;width: 45%;display:flex; flex-direction: column; align-items: center;}
+    {# .quiz-a {color:white;} #}
+    {# .quiz-ul {padding-left: 100px;} #}
+    .historique-container {color:white;width: 30%;display:flex; flex-direction: column; align-items: center;}
+    ul {list-style-type: none;}
+    li {padding: 0.3em;}
+    a {text-decoration: none;color: #fff;padding: 1em;}
+    a:hover {color: #ff00ff}
+    h3 {background-color: #000033;border-radius: 5px;padding: 0.5em;}
+</style>
+
+{% block body %}
+<div class="body-container">
+<div class="categories-container">
+    <h3>Catégories:</h3>
+    <ul>
+        {% for categorie in categoriesWithQuestions %}
+            <li><a href="question/{{categorie.category.id}}/{{categorie.firstQuestionId.id}}">{{ categorie.category.name }}</a></li>    
+        {% else %}
+            No categories have been found.
+        {% endfor %} 
+    </ul>
+</div>
+    <div class="historique-container">
+    <h3>Historique & Notes:</h3>
+    {% if historique %}
+        {% for cookie in historique %}
+            <div style="display:flex;flex-direction:column;">
+                <ul>
+                    <li><a href="resultat/{{cookie.categorieId}}/{{cookie.firstQuestionId}}">{{ cookie.categorieName }}</a></li>    
+                </ul>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Vous n'avez répondu à aucun quiz !</p>
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

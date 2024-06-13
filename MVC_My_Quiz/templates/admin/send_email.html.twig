@@ -1,0 +1,27 @@
+{# templates/admin/send_email.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Send Email to Users</h1>
+
+<form method="post">
+    <div>
+        <label for="subject">Objet</label>
+        <input type="text" id="subject" name="subject" required>
+    </div><br>
+    <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
+    <br>
+    <div>
+        <label for="users">Select Users</label>
+        <select id="users" name="users[]" multiple required>
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.email }}</option>
+            {% endfor %}
+        </select>
+    </div><br>
+    <button type="submit">Send Email</button>
+</form>
+{% endblock %}

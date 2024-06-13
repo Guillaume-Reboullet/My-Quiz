@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
+
+<style>
+    .mb-3 {
+        font-size: 35px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .mb-3 a {
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .mb-3 a:hover {
+        background: radial-gradient(circle, rgba(186,96,228,1) 0%, rgba(96,38,116,1) 100%);;
+        color: black;
+    }
+
+    .profile {display:flex; align-items: center; justify-content: space-around}
+
+</style>

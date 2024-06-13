@@ -1,0 +1,25 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+
+{% block body %}
+    <h1>Profil de : {{ app.user.userIdentifier }}</h1>
+
+<div class="profile">
+    <form method="post">
+        {{ form_start(formChangeEmail) }}
+        {{ form_row(formChangeEmail.email) }}
+        {{ form_row(formChangeEmail.currentPassword) }}
+        <button type="submit">Changer l'e-mail</button>
+        {{ form_end(formChangeEmail) }}
+    </form>
+
+    
+    <div class="mb-3">
+        <a href="{{ path('app_forgot_password_request') }}">Modifiez votre password !</a>
+    </div>
+
+</div>    
+{% endblock %}

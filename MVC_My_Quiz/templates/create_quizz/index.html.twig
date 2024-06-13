@@ -1,0 +1,90 @@
+{% include 'header.html.twig' %}
+{% include 'base.html.twig' %}
+<style>
+	.body-container {
+		display: flex;
+		justify-content: space-around;
+		font-size: 35px;
+		flex-wrap: wrap;
+	}
+	.categories-container {
+		color: white;
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.quiz-container {
+		color: white;
+		width: 45%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.quiz-a {
+		color: white;
+	}
+	.quiz-ul {
+		padding-left: 100px;
+	}
+	.historique-container {
+		color: white;
+		width: 30%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.hr-main {
+		border: none;
+		border-top: 3px double #333;
+		color: #333;
+		overflow: visible;
+		text-align: center;
+		height: 5px;
+		width: 100%;
+		margin: 40px 0;
+	}
+
+	.hr-main::after {
+		background: #574c94;
+		content: '§';
+		padding: 0 4px;
+		position: relative;
+		top: -25px;
+	}
+</style>
+
+{% block body %}
+	<div class="body-container">
+		<div class="categories-container">
+			<h3>Créer un quizz:</h3>
+			<form action="../../get_new_quizz" method="POST" style="display: flex; flex-direction:column; width: 100%; align-items: center;">
+				<label name="titre">Titre:</label>
+				<input type="text" name="titre" style="width: 70%; margin: 10px 0;" placeholder="Entrez le titre de votre quizz" required></input>
+			{% for i in 0..9 %}
+				<hr class="hr-main"/>
+				<label name="question {{i + 1}}" style="margin-top: 20px">Question
+					{{i + 1}}:</label>
+				<input type="text" name="question_{{i + 1}}" placeholder="Entrez la question n° {{i + 1}}" style="width: 70%; margin: 10px 0;" required></input>
+			<div style="display:flex; justify-content: space-between; flex-wrap: wrap; margin: 30px 0">
+				{% for j in 0..3 %}
+					<div style="width: 50%; display: flex; justify-content: space-around; margin: 10px 0;">
+						<div style="display: flex; justify-content: end;">
+							<label name="reponse {{j + 1}}">Reponse
+								{{j + 1}}
+								:</label>
+						</div>
+						<input type="text" name="reponse_{{i + 1}}_{{j + 1}}" placeholder="Entrez la reponse n° {{j + 1}}" style="width: 60%" required></input>
+				</div>
+			{% endfor %}
+		</div>
+		<label name="reponse_expected">Quel est la bonne réponse</label>
+		<select name="reponseExpected_{{i + 1}}" style="width: 40%; margin-bottom: 25px;">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+	{% endfor %}
+    <button type="submit" style="width: 30%; margin: 35px;">Créer</button>
+</form></div></div>{% endblock %}

@@ -1,0 +1,54 @@
+<style>
+	#container {
+		display: flex;
+		align-items: center;
+		justify-content: space-around
+	}
+	#logo {
+		width: 33%;
+		position: relative;
+	}
+
+	.mb-3 {
+		font-size: 20px;
+		font-weight: bold;
+		color: white;
+	}
+
+	.mb-3 a {
+		position: relative;
+		{
+			# font-size: 35px; 
+		}
+		font-weight: bold;
+		color: white;
+		text-decoration: none;
+		padding: 10px 20px;
+		border: 2px solid #fff;
+		border-radius: 5px;
+		transition: background-color 0.3s, color 0.3s;
+	}
+
+	.mb-3 a:hover {
+		background: radial-gradient(circle, rgba(186,96,228,1) 0%, rgba(96,38,116,1) 100%);
+		color: black;
+	}
+</style>
+<header id="container">
+	{% if app.user %}
+		<div class="mb-3">
+			<a href="{{ path('app_create_quizz') }}">Créer une quizz</a>
+		</div>
+	{% endif %}
+	<img id="logo" src="{{ asset('images/logoVF.png') }}"></img>
+{% if app.user %}
+	<div class="mb-3">
+		{{ app.user.userIdentifier }},
+		<a href="{{ path('app_logout') }}">Logout</a>
+		<a href="{{ path('app_profile') }}">Profile</a>
+	</div>
+{% else %}
+	<div class="mb-3">
+		<a href="{{ path('app_login') }}">Se connecter</a>
+	</div>
+{% endif %}</header>
